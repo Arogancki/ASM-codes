@@ -1,0 +1,9 @@
+#include <8051.h>
+
+voi
+
+int main(void)
+{
+	P2=0;
+	for (;;);
+}

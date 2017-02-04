@@ -1,0 +1,733 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.0.1 #6083 (Dec 17 2010) (MINGW32)
+                              4 ; This file was generated Mon May 09 17:34:04 2016
+                              5 ;--------------------------------------------------------
+                              6 	.module 10v4
+                              7 	.optsdcc -mmcs51 --model-small
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _TablicaZnakow
+                             13 	.globl _tablicaAnod
+                             14 	.globl _buttonR
+                             15 	.globl _buttonL
+                             16 	.globl _timer0
+                             17 	.globl _main
+                             18 	.globl _CY
+                             19 	.globl _AC
+                             20 	.globl _F0
+                             21 	.globl _RS1
+                             22 	.globl _RS0
+                             23 	.globl _OV
+                             24 	.globl _F1
+                             25 	.globl _P
+                             26 	.globl _PS
+                             27 	.globl _PT1
+                             28 	.globl _PX1
+                             29 	.globl _PT0
+                             30 	.globl _PX0
+                             31 	.globl _RD
+                             32 	.globl _WR
+                             33 	.globl _T1
+                             34 	.globl _T0
+                             35 	.globl _INT1
+                             36 	.globl _INT0
+                             37 	.globl _TXD
+                             38 	.globl _RXD
+                             39 	.globl _P3_7
+                             40 	.globl _P3_6
+                             41 	.globl _P3_5
+                             42 	.globl _P3_4
+                             43 	.globl _P3_3
+                             44 	.globl _P3_2
+                             45 	.globl _P3_1
+                             46 	.globl _P3_0
+                             47 	.globl _EA
+                             48 	.globl _ES
+                             49 	.globl _ET1
+                             50 	.globl _EX1
+                             51 	.globl _ET0
+                             52 	.globl _EX0
+                             53 	.globl _P2_7
+                             54 	.globl _P2_6
+                             55 	.globl _P2_5
+                             56 	.globl _P2_4
+                             57 	.globl _P2_3
+                             58 	.globl _P2_2
+                             59 	.globl _P2_1
+                             60 	.globl _P2_0
+                             61 	.globl _SM0
+                             62 	.globl _SM1
+                             63 	.globl _SM2
+                             64 	.globl _REN
+                             65 	.globl _TB8
+                             66 	.globl _RB8
+                             67 	.globl _TI
+                             68 	.globl _RI
+                             69 	.globl _P1_7
+                             70 	.globl _P1_6
+                             71 	.globl _P1_5
+                             72 	.globl _P1_4
+                             73 	.globl _P1_3
+                             74 	.globl _P1_2
+                             75 	.globl _P1_1
+                             76 	.globl _P1_0
+                             77 	.globl _TF1
+                             78 	.globl _TR1
+                             79 	.globl _TF0
+                             80 	.globl _TR0
+                             81 	.globl _IE1
+                             82 	.globl _IT1
+                             83 	.globl _IE0
+                             84 	.globl _IT0
+                             85 	.globl _P0_7
+                             86 	.globl _P0_6
+                             87 	.globl _P0_5
+                             88 	.globl _P0_4
+                             89 	.globl _P0_3
+                             90 	.globl _P0_2
+                             91 	.globl _P0_1
+                             92 	.globl _P0_0
+                             93 	.globl _B
+                             94 	.globl _ACC
+                             95 	.globl _PSW
+                             96 	.globl _IP
+                             97 	.globl _P3
+                             98 	.globl _IE
+                             99 	.globl _P2
+                            100 	.globl _SBUF
+                            101 	.globl _SCON
+                            102 	.globl _P1
+                            103 	.globl _TH1
+                            104 	.globl _TH0
+                            105 	.globl _TL1
+                            106 	.globl _TL0
+                            107 	.globl _TMOD
+                            108 	.globl _TCON
+                            109 	.globl _PCON
+                            110 	.globl _DPH
+                            111 	.globl _DPL
+                            112 	.globl _SP
+                            113 	.globl _P0
+                            114 	.globl _flagaR
+                            115 	.globl _flagaL
+                            116 	.globl _licznikk
+                            117 	.globl _Licznik2
+                            118 	.globl _Liczba
+                            119 	.globl _count
+                            120 	.globl _Bufor
+                            121 	.globl _Licznik
+                            122 ;--------------------------------------------------------
+                            123 ; special function registers
+                            124 ;--------------------------------------------------------
+                            125 	.area RSEG    (ABS,DATA)
+   0000                     126 	.org 0x0000
+                    0080    127 _P0	=	0x0080
+                    0081    128 _SP	=	0x0081
+                    0082    129 _DPL	=	0x0082
+                    0083    130 _DPH	=	0x0083
+                    0087    131 _PCON	=	0x0087
+                    0088    132 _TCON	=	0x0088
+                    0089    133 _TMOD	=	0x0089
+                    008A    134 _TL0	=	0x008a
+                    008B    135 _TL1	=	0x008b
+                    008C    136 _TH0	=	0x008c
+                    008D    137 _TH1	=	0x008d
+                    0090    138 _P1	=	0x0090
+                    0098    139 _SCON	=	0x0098
+                    0099    140 _SBUF	=	0x0099
+                    00A0    141 _P2	=	0x00a0
+                    00A8    142 _IE	=	0x00a8
+                    00B0    143 _P3	=	0x00b0
+                    00B8    144 _IP	=	0x00b8
+                    00D0    145 _PSW	=	0x00d0
+                    00E0    146 _ACC	=	0x00e0
+                    00F0    147 _B	=	0x00f0
+                            148 ;--------------------------------------------------------
+                            149 ; special function bits
+                            150 ;--------------------------------------------------------
+                            151 	.area RSEG    (ABS,DATA)
+   0000                     152 	.org 0x0000
+                    0080    153 _P0_0	=	0x0080
+                    0081    154 _P0_1	=	0x0081
+                    0082    155 _P0_2	=	0x0082
+                    0083    156 _P0_3	=	0x0083
+                    0084    157 _P0_4	=	0x0084
+                    0085    158 _P0_5	=	0x0085
+                    0086    159 _P0_6	=	0x0086
+                    0087    160 _P0_7	=	0x0087
+                    0088    161 _IT0	=	0x0088
+                    0089    162 _IE0	=	0x0089
+                    008A    163 _IT1	=	0x008a
+                    008B    164 _IE1	=	0x008b
+                    008C    165 _TR0	=	0x008c
+                    008D    166 _TF0	=	0x008d
+                    008E    167 _TR1	=	0x008e
+                    008F    168 _TF1	=	0x008f
+                    0090    169 _P1_0	=	0x0090
+                    0091    170 _P1_1	=	0x0091
+                    0092    171 _P1_2	=	0x0092
+                    0093    172 _P1_3	=	0x0093
+                    0094    173 _P1_4	=	0x0094
+                    0095    174 _P1_5	=	0x0095
+                    0096    175 _P1_6	=	0x0096
+                    0097    176 _P1_7	=	0x0097
+                    0098    177 _RI	=	0x0098
+                    0099    178 _TI	=	0x0099
+                    009A    179 _RB8	=	0x009a
+                    009B    180 _TB8	=	0x009b
+                    009C    181 _REN	=	0x009c
+                    009D    182 _SM2	=	0x009d
+                    009E    183 _SM1	=	0x009e
+                    009F    184 _SM0	=	0x009f
+                    00A0    185 _P2_0	=	0x00a0
+                    00A1    186 _P2_1	=	0x00a1
+                    00A2    187 _P2_2	=	0x00a2
+                    00A3    188 _P2_3	=	0x00a3
+                    00A4    189 _P2_4	=	0x00a4
+                    00A5    190 _P2_5	=	0x00a5
+                    00A6    191 _P2_6	=	0x00a6
+                    00A7    192 _P2_7	=	0x00a7
+                    00A8    193 _EX0	=	0x00a8
+                    00A9    194 _ET0	=	0x00a9
+                    00AA    195 _EX1	=	0x00aa
+                    00AB    196 _ET1	=	0x00ab
+                    00AC    197 _ES	=	0x00ac
+                    00AF    198 _EA	=	0x00af
+                    00B0    199 _P3_0	=	0x00b0
+                    00B1    200 _P3_1	=	0x00b1
+                    00B2    201 _P3_2	=	0x00b2
+                    00B3    202 _P3_3	=	0x00b3
+                    00B4    203 _P3_4	=	0x00b4
+                    00B5    204 _P3_5	=	0x00b5
+                    00B6    205 _P3_6	=	0x00b6
+                    00B7    206 _P3_7	=	0x00b7
+                    00B0    207 _RXD	=	0x00b0
+                    00B1    208 _TXD	=	0x00b1
+                    00B2    209 _INT0	=	0x00b2
+                    00B3    210 _INT1	=	0x00b3
+                    00B4    211 _T0	=	0x00b4
+                    00B5    212 _T1	=	0x00b5
+                    00B6    213 _WR	=	0x00b6
+                    00B7    214 _RD	=	0x00b7
+                    00B8    215 _PX0	=	0x00b8
+                    00B9    216 _PT0	=	0x00b9
+                    00BA    217 _PX1	=	0x00ba
+                    00BB    218 _PT1	=	0x00bb
+                    00BC    219 _PS	=	0x00bc
+                    00D0    220 _P	=	0x00d0
+                    00D1    221 _F1	=	0x00d1
+                    00D2    222 _OV	=	0x00d2
+                    00D3    223 _RS0	=	0x00d3
+                    00D4    224 _RS1	=	0x00d4
+                    00D5    225 _F0	=	0x00d5
+                    00D6    226 _AC	=	0x00d6
+                    00D7    227 _CY	=	0x00d7
+                            228 ;--------------------------------------------------------
+                            229 ; overlayable register banks
+                            230 ;--------------------------------------------------------
+                            231 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     232 	.ds 8
+                            233 	.area REG_BANK_1	(REL,OVR,DATA)
+   0000                     234 	.ds 8
+                            235 ;--------------------------------------------------------
+                            236 ; overlayable bit register bank
+                            237 ;--------------------------------------------------------
+                            238 	.area BIT_BANK	(REL,OVR,DATA)
+   0000                     239 bits:
+   0000                     240 	.ds 1
+                    8000    241 	b0 = bits[0]
+                    8100    242 	b1 = bits[1]
+                    8200    243 	b2 = bits[2]
+                    8300    244 	b3 = bits[3]
+                    8400    245 	b4 = bits[4]
+                    8500    246 	b5 = bits[5]
+                    8600    247 	b6 = bits[6]
+                    8700    248 	b7 = bits[7]
+                            249 ;--------------------------------------------------------
+                            250 ; internal ram data
+                            251 ;--------------------------------------------------------
+                            252 	.area DSEG    (DATA)
+   0000                     253 _Licznik::
+   0000                     254 	.ds 1
+   0001                     255 _Bufor::
+   0001                     256 	.ds 4
+   0005                     257 _count::
+   0005                     258 	.ds 2
+   0007                     259 _Liczba::
+   0007                     260 	.ds 2
+   0009                     261 _Licznik2::
+   0009                     262 	.ds 2
+   000B                     263 _licznikk::
+   000B                     264 	.ds 2
+   000D                     265 _flagaL::
+   000D                     266 	.ds 1
+   000E                     267 _flagaR::
+   000E                     268 	.ds 1
+                            269 ;--------------------------------------------------------
+                            270 ; overlayable items in internal ram 
+                            271 ;--------------------------------------------------------
+                            272 	.area OSEG    (OVR,DATA)
+                            273 ;--------------------------------------------------------
+                            274 ; Stack segment in internal ram 
+                            275 ;--------------------------------------------------------
+                            276 	.area	SSEG	(DATA)
+   0000                     277 __start__stack:
+   0000                     278 	.ds	1
+                            279 
+                            280 ;--------------------------------------------------------
+                            281 ; indirectly addressable internal ram data
+                            282 ;--------------------------------------------------------
+                            283 	.area ISEG    (DATA)
+                            284 ;--------------------------------------------------------
+                            285 ; absolute internal ram data
+                            286 ;--------------------------------------------------------
+                            287 	.area IABS    (ABS,DATA)
+                            288 	.area IABS    (ABS,DATA)
+                            289 ;--------------------------------------------------------
+                            290 ; bit data
+                            291 ;--------------------------------------------------------
+                            292 	.area BSEG    (BIT)
+                            293 ;--------------------------------------------------------
+                            294 ; paged external ram data
+                            295 ;--------------------------------------------------------
+                            296 	.area PSEG    (PAG,XDATA)
+                            297 ;--------------------------------------------------------
+                            298 ; external ram data
+                            299 ;--------------------------------------------------------
+                            300 	.area XSEG    (XDATA)
+                            301 ;--------------------------------------------------------
+                            302 ; absolute external ram data
+                            303 ;--------------------------------------------------------
+                            304 	.area XABS    (ABS,XDATA)
+                            305 ;--------------------------------------------------------
+                            306 ; external initialized ram data
+                            307 ;--------------------------------------------------------
+                            308 	.area XISEG   (XDATA)
+                            309 	.area HOME    (CODE)
+                            310 	.area GSINIT0 (CODE)
+                            311 	.area GSINIT1 (CODE)
+                            312 	.area GSINIT2 (CODE)
+                            313 	.area GSINIT3 (CODE)
+                            314 	.area GSINIT4 (CODE)
+                            315 	.area GSINIT5 (CODE)
+                            316 	.area GSINIT  (CODE)
+                            317 	.area GSFINAL (CODE)
+                            318 	.area CSEG    (CODE)
+                            319 ;--------------------------------------------------------
+                            320 ; interrupt vector 
+                            321 ;--------------------------------------------------------
+                            322 	.area HOME    (CODE)
+   0000                     323 __interrupt_vect:
+   0000 02s00r00            324 	ljmp	__sdcc_gsinit_startup
+   0003 02s01r78            325 	ljmp	_buttonL
+   0006                     326 	.ds	5
+   000B 02s00r23            327 	ljmp	_timer0
+   000E                     328 	.ds	5
+   0013 02s01rA1            329 	ljmp	_buttonR
+                            330 ;--------------------------------------------------------
+                            331 ; global & static initialisations
+                            332 ;--------------------------------------------------------
+                            333 	.area HOME    (CODE)
+                            334 	.area GSINIT  (CODE)
+                            335 	.area GSFINAL (CODE)
+                            336 	.area GSINIT  (CODE)
+                            337 	.globl __sdcc_gsinit_startup
+                            338 	.globl __sdcc_program_startup
+                            339 	.globl __start__stack
+                            340 	.globl __mcs51_genXINIT
+                            341 	.globl __mcs51_genXRAMCLEAR
+                            342 	.globl __mcs51_genRAMCLEAR
+                            343 ;	Z:\Pulpit\SW\lab10\10v4.c:13: unsigned char Licznik =0;
+   0000 75*00 00            344 	mov	_Licznik,#0x00
+                            345 ;	Z:\Pulpit\SW\lab10\10v4.c:15: unsigned int count =0;
+   0003 E4                  346 	clr	a
+   0004 F5*05               347 	mov	_count,a
+   0006 F5*06               348 	mov	(_count + 1),a
+                            349 ;	Z:\Pulpit\SW\lab10\10v4.c:16: unsigned int Liczba=0;
+   0008 E4                  350 	clr	a
+   0009 F5*07               351 	mov	_Liczba,a
+   000B F5*08               352 	mov	(_Liczba + 1),a
+                            353 ;	Z:\Pulpit\SW\lab10\10v4.c:17: unsigned int Licznik2=0;
+   000D E4                  354 	clr	a
+   000E F5*09               355 	mov	_Licznik2,a
+   0010 F5*0A               356 	mov	(_Licznik2 + 1),a
+                            357 ;	Z:\Pulpit\SW\lab10\10v4.c:19: unsigned int licznikk=0;
+   0012 E4                  358 	clr	a
+   0013 F5*0B               359 	mov	_licznikk,a
+   0015 F5*0C               360 	mov	(_licznikk + 1),a
+                            361 ;	Z:\Pulpit\SW\lab10\10v4.c:23: unsigned char flagaL =0;
+   0017 75*0D 00            362 	mov	_flagaL,#0x00
+                            363 ;	Z:\Pulpit\SW\lab10\10v4.c:24: unsigned char flagaR =0;
+   001A 75*0E 00            364 	mov	_flagaR,#0x00
+                            365 	.area GSFINAL (CODE)
+   0000 02s00r16            366 	ljmp	__sdcc_program_startup
+                            367 ;--------------------------------------------------------
+                            368 ; Home
+                            369 ;--------------------------------------------------------
+                            370 	.area HOME    (CODE)
+                            371 	.area HOME    (CODE)
+   0016                     372 __sdcc_program_startup:
+   0016 12s00r00            373 	lcall	_main
+                            374 ;	return from main will lock up
+   0019 80 FE               375 	sjmp .
+                            376 ;--------------------------------------------------------
+                            377 ; code
+                            378 ;--------------------------------------------------------
+                            379 	.area CSEG    (CODE)
+                            380 ;------------------------------------------------------------
+                            381 ;Allocation info for local variables in function 'main'
+                            382 ;------------------------------------------------------------
+                            383 ;------------------------------------------------------------
+                            384 ;	Z:\Pulpit\SW\lab10\10v4.c:26: int main(){
+                            385 ;	-----------------------------------------
+                            386 ;	 function main
+                            387 ;	-----------------------------------------
+   0000                     388 _main:
+                    0002    389 	ar2 = 0x02
+                    0003    390 	ar3 = 0x03
+                    0004    391 	ar4 = 0x04
+                    0005    392 	ar5 = 0x05
+                    0006    393 	ar6 = 0x06
+                    0007    394 	ar7 = 0x07
+                    0000    395 	ar0 = 0x00
+                    0001    396 	ar1 = 0x01
+                            397 ;	Z:\Pulpit\SW\lab10\10v4.c:28: TMOD=1;
+   0000 75 89 01            398 	mov	_TMOD,#0x01
+                            399 ;	Z:\Pulpit\SW\lab10\10v4.c:29: TH0=czas/256;
+   0003 75 8C FD            400 	mov	_TH0,#0xFD
+                            401 ;	Z:\Pulpit\SW\lab10\10v4.c:30: TL0=czas%256;
+   0006 75 8A 18            402 	mov	_TL0,#0x18
+                            403 ;	Z:\Pulpit\SW\lab10\10v4.c:31: TR0=1;
+   0009 D2 8C               404 	setb	_TR0
+                            405 ;	Z:\Pulpit\SW\lab10\10v4.c:32: ET0=1;
+   000B D2 A9               406 	setb	_ET0
+                            407 ;	Z:\Pulpit\SW\lab10\10v4.c:33: EX1=1;
+   000D D2 AA               408 	setb	_EX1
+                            409 ;	Z:\Pulpit\SW\lab10\10v4.c:34: EX0=1;
+   000F D2 A8               410 	setb	_EX0
+                            411 ;	Z:\Pulpit\SW\lab10\10v4.c:35: PT0=1;
+   0011 D2 B9               412 	setb	_PT0
+                            413 ;	Z:\Pulpit\SW\lab10\10v4.c:36: EA=1;
+   0013 D2 AF               414 	setb	_EA
+                            415 ;	Z:\Pulpit\SW\lab10\10v4.c:38: Bufor[0]=0;
+   0015 75*01 00            416 	mov	_Bufor,#0x00
+                            417 ;	Z:\Pulpit\SW\lab10\10v4.c:39: Bufor[1]=0;
+   0018 75*02 00            418 	mov	(_Bufor + 0x0001),#0x00
+                            419 ;	Z:\Pulpit\SW\lab10\10v4.c:40: Bufor[2]=0;
+   001B 75*03 00            420 	mov	(_Bufor + 0x0002),#0x00
+                            421 ;	Z:\Pulpit\SW\lab10\10v4.c:41: Bufor[3]=0;
+   001E 75*04 00            422 	mov	(_Bufor + 0x0003),#0x00
+                            423 ;	Z:\Pulpit\SW\lab10\10v4.c:44: while(1);
+   0021                     424 00102$:
+   0021 80 FE               425 	sjmp	00102$
+                            426 ;------------------------------------------------------------
+                            427 ;Allocation info for local variables in function 'timer0'
+                            428 ;------------------------------------------------------------
+                            429 ;------------------------------------------------------------
+                            430 ;	Z:\Pulpit\SW\lab10\10v4.c:47: void timer0(void)__interrupt(1)__using(1)
+                            431 ;	-----------------------------------------
+                            432 ;	 function timer0
+                            433 ;	-----------------------------------------
+   0023                     434 _timer0:
+                    000A    435 	ar2 = 0x0a
+                    000B    436 	ar3 = 0x0b
+                    000C    437 	ar4 = 0x0c
+                    000D    438 	ar5 = 0x0d
+                    000E    439 	ar6 = 0x0e
+                    000F    440 	ar7 = 0x0f
+                    0008    441 	ar0 = 0x08
+                    0009    442 	ar1 = 0x09
+   0023 C0*00               443 	push	bits
+   0025 C0 E0               444 	push	acc
+   0027 C0 F0               445 	push	b
+   0029 C0 82               446 	push	dpl
+   002B C0 83               447 	push	dph
+   002D C0 02               448 	push	(0+2)
+   002F C0 03               449 	push	(0+3)
+   0031 C0 04               450 	push	(0+4)
+   0033 C0 05               451 	push	(0+5)
+   0035 C0 06               452 	push	(0+6)
+   0037 C0 07               453 	push	(0+7)
+   0039 C0 00               454 	push	(0+0)
+   003B C0 01               455 	push	(0+1)
+   003D C0 D0               456 	push	psw
+   003F 75 D0 08            457 	mov	psw,#0x08
+                            458 ;	Z:\Pulpit\SW\lab10\10v4.c:49: TH0=czas/256;
+   0042 75 8C FD            459 	mov	_TH0,#0xFD
+                            460 ;	Z:\Pulpit\SW\lab10\10v4.c:50: TL0=czas%256;
+   0045 75 8A 18            461 	mov	_TL0,#0x18
+                            462 ;	Z:\Pulpit\SW\lab10\10v4.c:52: if(++count>5)
+   0048 05*05               463 	inc	_count
+   004A E4                  464 	clr	a
+   004B B5*05 02            465 	cjne	a,_count,00121$
+   004E 05*06               466 	inc	(_count + 1)
+   0050                     467 00121$:
+   0050 C3                  468 	clr	c
+   0051 74 05               469 	mov	a,#0x05
+   0053 95*05               470 	subb	a,_count
+   0055 E4                  471 	clr	a
+   0056 95*06               472 	subb	a,(_count + 1)
+   0058 40 03               473 	jc	00122$
+   005A 02s01r55            474 	ljmp	00113$
+   005D                     475 00122$:
+                            476 ;	Z:\Pulpit\SW\lab10\10v4.c:54: portAnod= tablicaAnod[Licznik];
+   005D E5*00               477 	mov	a,_Licznik
+   005F 90s00r00            478 	mov	dptr,#_tablicaAnod
+   0062 93                  479 	movc	a,@a+dptr
+   0063 F5 80               480 	mov	_P0,a
+                            481 ;	Z:\Pulpit\SW\lab10\10v4.c:55: portSek=TablicaZnakow[Bufor[Licznik]];
+   0065 E5*00               482 	mov	a,_Licznik
+   0067 24r01               483 	add	a,#_Bufor
+   0069 F8                  484 	mov	r0,a
+   006A E6                  485 	mov	a,@r0
+   006B 90s00r04            486 	mov	dptr,#_TablicaZnakow
+   006E 93                  487 	movc	a,@a+dptr
+   006F F5 A0               488 	mov	_P2,a
+                            489 ;	Z:\Pulpit\SW\lab10\10v4.c:56: Licznik++;
+   0071 05*00               490 	inc	_Licznik
+                            491 ;	Z:\Pulpit\SW\lab10\10v4.c:57: Bufor[3]=(Liczba%10);
+   0073 74 0A               492 	mov	a,#0x0A
+   0075 C0 E0               493 	push	acc
+   0077 E4                  494 	clr	a
+   0078 C0 E0               495 	push	acc
+   007A 85*07 82            496 	mov	dpl,_Liczba
+   007D 85*08 83            497 	mov	dph,(_Liczba + 1)
+   0080 75 D0 00            498 	mov	psw,#0x00
+   0083 12s00r00            499 	lcall	__moduint
+   0086 75 D0 08            500 	mov	psw,#0x08
+   0089 AA 82               501 	mov	r2,dpl
+   008B 15 81               502 	dec	sp
+   008D 15 81               503 	dec	sp
+   008F 8A*04               504 	mov	(_Bufor + 0x0003),r2
+                            505 ;	Z:\Pulpit\SW\lab10\10v4.c:59: if((Liczba%100)/10 == 0)
+   0091 74 64               506 	mov	a,#0x64
+   0093 C0 E0               507 	push	acc
+   0095 E4                  508 	clr	a
+   0096 C0 E0               509 	push	acc
+   0098 85*07 82            510 	mov	dpl,_Liczba
+   009B 85*08 83            511 	mov	dph,(_Liczba + 1)
+   009E 75 D0 00            512 	mov	psw,#0x00
+   00A1 12s00r00            513 	lcall	__moduint
+   00A4 75 D0 08            514 	mov	psw,#0x08
+   00A7 AA 82               515 	mov	r2,dpl
+   00A9 AB 83               516 	mov	r3,dph
+   00AB 15 81               517 	dec	sp
+   00AD 15 81               518 	dec	sp
+   00AF 74 0A               519 	mov	a,#0x0A
+   00B1 C0 E0               520 	push	acc
+   00B3 E4                  521 	clr	a
+   00B4 C0 E0               522 	push	acc
+   00B6 8A 82               523 	mov	dpl,r2
+   00B8 8B 83               524 	mov	dph,r3
+   00BA 75 D0 00            525 	mov	psw,#0x00
+   00BD 12s00r00            526 	lcall	__divuint
+   00C0 75 D0 08            527 	mov	psw,#0x08
+   00C3 AA 82               528 	mov	r2,dpl
+   00C5 AB 83               529 	mov	r3,dph
+   00C7 15 81               530 	dec	sp
+   00C9 15 81               531 	dec	sp
+   00CB EA                  532 	mov	a,r2
+   00CC 4B                  533 	orl	a,r3
+   00CD 70 05               534 	jnz	00102$
+                            535 ;	Z:\Pulpit\SW\lab10\10v4.c:60: Bufor[2]=blank;
+   00CF 75*03 0A            536 	mov	(_Bufor + 0x0002),#0x0A
+   00D2 80 02               537 	sjmp	00103$
+   00D4                     538 00102$:
+                            539 ;	Z:\Pulpit\SW\lab10\10v4.c:62: Bufor[2]=(Liczba%100)/10;
+   00D4 8A*03               540 	mov	(_Bufor + 0x0002),r2
+   00D6                     541 00103$:
+                            542 ;	Z:\Pulpit\SW\lab10\10v4.c:63: if((Liczba%1000)/100 == 0)
+   00D6 74 E8               543 	mov	a,#0xE8
+   00D8 C0 E0               544 	push	acc
+   00DA 74 03               545 	mov	a,#0x03
+   00DC C0 E0               546 	push	acc
+   00DE 85*07 82            547 	mov	dpl,_Liczba
+   00E1 85*08 83            548 	mov	dph,(_Liczba + 1)
+   00E4 75 D0 00            549 	mov	psw,#0x00
+   00E7 12s00r00            550 	lcall	__moduint
+   00EA 75 D0 08            551 	mov	psw,#0x08
+   00ED AA 82               552 	mov	r2,dpl
+   00EF AB 83               553 	mov	r3,dph
+   00F1 15 81               554 	dec	sp
+   00F3 15 81               555 	dec	sp
+   00F5 74 64               556 	mov	a,#0x64
+   00F7 C0 E0               557 	push	acc
+   00F9 E4                  558 	clr	a
+   00FA C0 E0               559 	push	acc
+   00FC 8A 82               560 	mov	dpl,r2
+   00FE 8B 83               561 	mov	dph,r3
+   0100 75 D0 00            562 	mov	psw,#0x00
+   0103 12s00r00            563 	lcall	__divuint
+   0106 75 D0 08            564 	mov	psw,#0x08
+   0109 AA 82               565 	mov	r2,dpl
+   010B AB 83               566 	mov	r3,dph
+   010D 15 81               567 	dec	sp
+   010F 15 81               568 	dec	sp
+   0111 EA                  569 	mov	a,r2
+   0112 4B                  570 	orl	a,r3
+   0113 70 05               571 	jnz	00105$
+                            572 ;	Z:\Pulpit\SW\lab10\10v4.c:64: Bufor[1]=blank;
+   0115 75*02 0A            573 	mov	(_Bufor + 0x0001),#0x0A
+   0118 80 02               574 	sjmp	00106$
+   011A                     575 00105$:
+                            576 ;	Z:\Pulpit\SW\lab10\10v4.c:66: Bufor[1]=(Liczba%1000)/100;
+   011A 8A*02               577 	mov	(_Bufor + 0x0001),r2
+   011C                     578 00106$:
+                            579 ;	Z:\Pulpit\SW\lab10\10v4.c:67: if(Liczba/1000 == 0)
+   011C 74 E8               580 	mov	a,#0xE8
+   011E C0 E0               581 	push	acc
+   0120 74 03               582 	mov	a,#0x03
+   0122 C0 E0               583 	push	acc
+   0124 85*07 82            584 	mov	dpl,_Liczba
+   0127 85*08 83            585 	mov	dph,(_Liczba + 1)
+   012A 75 D0 00            586 	mov	psw,#0x00
+   012D 12s00r00            587 	lcall	__divuint
+   0130 75 D0 08            588 	mov	psw,#0x08
+   0133 AA 82               589 	mov	r2,dpl
+   0135 AB 83               590 	mov	r3,dph
+   0137 15 81               591 	dec	sp
+   0139 15 81               592 	dec	sp
+   013B EA                  593 	mov	a,r2
+   013C 4B                  594 	orl	a,r3
+   013D 70 05               595 	jnz	00108$
+                            596 ;	Z:\Pulpit\SW\lab10\10v4.c:68: Bufor[0]=blank;
+   013F 75*01 0A            597 	mov	_Bufor,#0x0A
+   0142 80 02               598 	sjmp	00109$
+   0144                     599 00108$:
+                            600 ;	Z:\Pulpit\SW\lab10\10v4.c:70: Bufor[0]=Liczba/1000;
+   0144 8A*01               601 	mov	_Bufor,r2
+   0146                     602 00109$:
+                            603 ;	Z:\Pulpit\SW\lab10\10v4.c:72: if(Licznik >3)Licznik=0;
+   0146 74 03               604 	mov	a,#0x03
+   0148 B5*00 00            605 	cjne	a,_Licznik,00126$
+   014B                     606 00126$:
+   014B 50 03               607 	jnc	00111$
+   014D 75*00 00            608 	mov	_Licznik,#0x00
+   0150                     609 00111$:
+                            610 ;	Z:\Pulpit\SW\lab10\10v4.c:73: count=0;
+   0150 E4                  611 	clr	a
+   0151 F5*05               612 	mov	_count,a
+   0153 F5*06               613 	mov	(_count + 1),a
+   0155                     614 00113$:
+                            615 ;	Z:\Pulpit\SW\lab10\10v4.c:75: flagaL=1;
+   0155 75*0D 01            616 	mov	_flagaL,#0x01
+                            617 ;	Z:\Pulpit\SW\lab10\10v4.c:76: flagaR=1;
+   0158 75*0E 01            618 	mov	_flagaR,#0x01
+   015B D0 D0               619 	pop	psw
+   015D D0 01               620 	pop	(0+1)
+   015F D0 00               621 	pop	(0+0)
+   0161 D0 07               622 	pop	(0+7)
+   0163 D0 06               623 	pop	(0+6)
+   0165 D0 05               624 	pop	(0+5)
+   0167 D0 04               625 	pop	(0+4)
+   0169 D0 03               626 	pop	(0+3)
+   016B D0 02               627 	pop	(0+2)
+   016D D0 83               628 	pop	dph
+   016F D0 82               629 	pop	dpl
+   0171 D0 F0               630 	pop	b
+   0173 D0 E0               631 	pop	acc
+   0175 D0*00               632 	pop	bits
+   0177 32                  633 	reti
+                            634 ;------------------------------------------------------------
+                            635 ;Allocation info for local variables in function 'buttonL'
+                            636 ;------------------------------------------------------------
+                            637 ;------------------------------------------------------------
+                            638 ;	Z:\Pulpit\SW\lab10\10v4.c:79: void buttonL(void)__interrupt(0)__using(1){
+                            639 ;	-----------------------------------------
+                            640 ;	 function buttonL
+                            641 ;	-----------------------------------------
+   0178                     642 _buttonL:
+   0178 C0 E0               643 	push	acc
+   017A C0 D0               644 	push	psw
+   017C 75 D0 08            645 	mov	psw,#0x08
+                            646 ;	Z:\Pulpit\SW\lab10\10v4.c:80: TH0=czas/256;
+   017F 75 8C FD            647 	mov	_TH0,#0xFD
+                            648 ;	Z:\Pulpit\SW\lab10\10v4.c:81: TL0=czas%256;
+   0182 75 8A 18            649 	mov	_TL0,#0x18
+                            650 ;	Z:\Pulpit\SW\lab10\10v4.c:82: if (flagaL==1)
+   0185 74 01               651 	mov	a,#0x01
+   0187 B5*0D 12            652 	cjne	a,_flagaL,00105$
+                            653 ;	Z:\Pulpit\SW\lab10\10v4.c:84: flagaL=0;
+   018A 75*0D 00            654 	mov	_flagaL,#0x00
+                            655 ;	Z:\Pulpit\SW\lab10\10v4.c:85: if(Liczba>0)
+   018D E5*07               656 	mov	a,_Liczba
+   018F 45*08               657 	orl	a,(_Liczba + 1)
+   0191 60 09               658 	jz	00105$
+                            659 ;	Z:\Pulpit\SW\lab10\10v4.c:86: Liczba--;
+   0193 15*07               660 	dec	_Liczba
+   0195 74 FF               661 	mov	a,#0xff
+   0197 B5*07 02            662 	cjne	a,_Liczba,00112$
+   019A 15*08               663 	dec	(_Liczba + 1)
+   019C                     664 00112$:
+   019C                     665 00105$:
+   019C D0 D0               666 	pop	psw
+   019E D0 E0               667 	pop	acc
+   01A0 32                  668 	reti
+                            669 ;	eliminated unneeded push/pop dpl
+                            670 ;	eliminated unneeded push/pop dph
+                            671 ;	eliminated unneeded push/pop b
+                            672 ;------------------------------------------------------------
+                            673 ;Allocation info for local variables in function 'buttonR'
+                            674 ;------------------------------------------------------------
+                            675 ;------------------------------------------------------------
+                            676 ;	Z:\Pulpit\SW\lab10\10v4.c:90: void buttonR(void)__interrupt(2)__using(1){
+                            677 ;	-----------------------------------------
+                            678 ;	 function buttonR
+                            679 ;	-----------------------------------------
+   01A1                     680 _buttonR:
+   01A1 C0 E0               681 	push	acc
+   01A3 C0 D0               682 	push	psw
+   01A5 75 D0 08            683 	mov	psw,#0x08
+                            684 ;	Z:\Pulpit\SW\lab10\10v4.c:91: TH0=czas/256;
+   01A8 75 8C FD            685 	mov	_TH0,#0xFD
+                            686 ;	Z:\Pulpit\SW\lab10\10v4.c:92: TL0=czas%256;
+   01AB 75 8A 18            687 	mov	_TL0,#0x18
+                            688 ;	Z:\Pulpit\SW\lab10\10v4.c:93: if (flagaR==1){
+   01AE 74 01               689 	mov	a,#0x01
+   01B0 B5*0E 16            690 	cjne	a,_flagaR,00105$
+                            691 ;	Z:\Pulpit\SW\lab10\10v4.c:94: flagaR=0;
+   01B3 75*0E 00            692 	mov	_flagaR,#0x00
+                            693 ;	Z:\Pulpit\SW\lab10\10v4.c:95: if(Liczba<20)
+   01B6 C3                  694 	clr	c
+   01B7 E5*07               695 	mov	a,_Liczba
+   01B9 94 14               696 	subb	a,#0x14
+   01BB E5*08               697 	mov	a,(_Liczba + 1)
+   01BD 94 00               698 	subb	a,#0x00
+   01BF 50 08               699 	jnc	00105$
+                            700 ;	Z:\Pulpit\SW\lab10\10v4.c:96: Liczba++;
+   01C1 05*07               701 	inc	_Liczba
+   01C3 E4                  702 	clr	a
+   01C4 B5*07 02            703 	cjne	a,_Liczba,00112$
+   01C7 05*08               704 	inc	(_Liczba + 1)
+   01C9                     705 00112$:
+   01C9                     706 00105$:
+   01C9 D0 D0               707 	pop	psw
+   01CB D0 E0               708 	pop	acc
+   01CD 32                  709 	reti
+                            710 ;	eliminated unneeded push/pop dpl
+                            711 ;	eliminated unneeded push/pop dph
+                            712 ;	eliminated unneeded push/pop b
+                            713 	.area CSEG    (CODE)
+                            714 	.area CONST   (CODE)
+   0000                     715 _tablicaAnod:
+   0000 0E                  716 	.db #0x0E	; 14
+   0001 0D                  717 	.db #0x0D	; 13
+   0002 0B                  718 	.db #0x0B	; 11
+   0003 07                  719 	.db #0x07	; 7
+   0004                     720 _TablicaZnakow:
+   0004 03                  721 	.db #0x03	; 3
+   0005 9F                  722 	.db #0x9F	; 159
+   0006 25                  723 	.db #0x25	; 37
+   0007 0D                  724 	.db #0x0D	; 13
+   0008 99                  725 	.db #0x99	; 153
+   0009 49                  726 	.db #0x49	; 73	I
+   000A 41                  727 	.db #0x41	; 65	A
+   000B 1F                  728 	.db #0x1F	; 31
+   000C 01                  729 	.db #0x01	; 1
+   000D 09                  730 	.db #0x09	; 9
+   000E FF                  731 	.db #0xFF	; 255
+                            732 	.area XINIT   (CODE)
+                            733 	.area CABS    (ABS,CODE)
